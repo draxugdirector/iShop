@@ -1,0 +1,2277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWata Nyongeza Oilers - Online Shopping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .search-bar {
+            flex: 1;
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 30px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent-color);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-bar button:hover {
+            background: #2980b9;
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-actions a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .user-actions a i {
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .user-actions a:hover {
+            color: var(--accent-color);
+        }
+
+        .cart-count {
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark-color);
+            padding: 0.8rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-right: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .category-dropdown {
+            position: relative;
+        }
+
+        .category-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .category-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .category-btn i {
+            margin-left: 8px;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            width: 250px;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .category-dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--light-color);
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .current-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-right: 1rem;
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+        }
+
+        .discount {
+            background-color: var(--success-color);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .add-to-cart, .view-details {
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .add-to-cart {
+            background-color: var(--accent-color);
+            color: white;
+            flex: 1;
+            margin-right: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: #2980b9;
+        }
+
+        .view-details {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            flex: 1;
+            margin-left: 0.5rem;
+        }
+
+        .view-details:hover {
+            background-color: #d5dbdb;
+        }
+
+        /* Product Details Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2rem auto;
+            max-width: 900px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--secondary-color);
+        }
+
+        .modal-body {
+            display: flex;
+            padding: 1.5rem;
+        }
+
+        .product-gallery {
+            flex: 1;
+            margin-right: 2rem;
+        }
+
+        .main-image {
+            height: 400px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail:hover {
+            border-color: var(--accent-color);
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-brand {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: var(--warning-color);
+            margin-right: 0.5rem;
+        }
+
+        .review-count {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .price-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .current-price-lg {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-right: 1rem;
+        }
+
+        .availability {
+            color: var(--success-color);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .availability i {
+            margin-right: 0.5rem;
+        }
+
+        .product-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .delivery-options {
+            margin-bottom: 2rem;
+        }
+
+        .delivery-title {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .location-select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .delivery-fee {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .quantity-btn {
+            background-color: var(--light-color);
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background-color: #d5dbdb;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin: 0 0.5rem;
+            font-size: 1rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .add-to-cart-lg, .buy-now {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-to-cart-lg {
+            background-color: var(--accent-color);
+            color: white;
+            flex: 2;
+        }
+
+        .add-to-cart-lg:hover {
+            background-color: #2980b9;
+        }
+
+        .buy-now {
+            background-color: var(--secondary-color);
+            color: white;
+            flex: 1;
+        }
+
+        .buy-now:hover {
+            background-color: #c0392b;
+        }
+
+        .action-buttons i {
+            margin-right: 0.5rem;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .cart-modal.active {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .cart-body {
+            padding: 1.5rem;
+        }
+
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            margin-right: 1rem;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-quantity-btn {
+            background-color: var(--light-color);
+            border: none;
+            width: 25px;
+            height: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cart-quantity-input {
+            width: 40px;
+            height: 25px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin: 0 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: auto;
+            align-self: flex-start;
+            transition: var(--transition);
+        }
+
+        .remove-item:hover {
+            color: var(--secondary-color);
+        }
+
+        .cart-summary {
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .summary-title {
+            color: var(--text-light);
+        }
+
+        .summary-value {
+            font-weight: 600;
+        }
+
+        .total {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1.5rem;
+        }
+
+        .checkout-btn:hover {
+            background-color: #219653;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .empty-cart i {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .empty-cart p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .shop-now-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .shop-now-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Login/Register Modal */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .auth-content {
+            background-color: white;
+            margin: 2rem auto;
+            max-width: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s;
+        }
+
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .auth-tab.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .auth-form {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+
+        .auth-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .auth-footer {
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .toggle-auth {
+            color: var(--accent-color);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            .search-bar {
+                margin: 1rem 0;
+            }
+
+            .user-actions {
+                justify-content: space-around;
+                margin-top: 1rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-links li {
+                margin-bottom: 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .modal-body {
+                flex-direction: column;
+            }
+
+            .product-gallery {
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 300px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .cart-modal {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 250px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .add-to-cart, .view-details {
+                margin: 0.3rem 0;
+                width: 100%;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .add-to-cart-lg, .buy-now {
+                width: 100%;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-shopping-basket"></i>
+                RWata Nyongeza Oilers
+            </a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for products...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-actions">
+                <a href="#" id="login-btn">
+                    <i class="fas fa-user"></i>
+                    <span>Login</span>
+                </a>
+                <a href="#" id="wishlist-btn">
+                    <i class="fas fa-heart"></i>
+                    <span>Wishlist</span>
+                </a>
+                <a href="#" id="cart-btn" class="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="category-dropdown">
+                <button class="category-btn">
+                    Categories <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Electronics</a>
+                    <a href="#">Home Appliances</a>
+                    <a href="#">Mobile Phones</a>
+                    <a href="#">Computers</a>
+                    <a href="#">Cameras</a>
+                    <a href="#">Cars</a>
+                    <a href="#">Others</a>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Shop the Best Deals Online</h1>
+            <p>Discover amazing products at unbeatable prices with fast delivery across Uganda</p>
+            <a href="#featured-products" class="hero-btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Featured Products -->
+        <section id="featured-products">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-id="1" data-category="Home Appliances">
+                    <span class="product-badge">-46%</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Water Dispenser">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Home Appliances</span>
+                        <h3 class="product-title">Chiq 270 Liters Water Dispenser</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 866,700</span>
+                            <span class="original-price">UGX 1,600,000</span>
+                            <span class="discount">46% off</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-id="2" data-category="Electronics">
+                    <span class="product-badge">-46%</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1546538915-a9e2c8d0a0da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="TV">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-title">Hisense 32 Inch HD LED TV</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 299,000</span>
+                            <span class="original-price">UGX 550,000</span>
+                            <span class="discount">46% off</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-id="3" data-category="Groceries">
+                    <span class="product-badge">-46%</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1627485937980-221c88ac04f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Milk Powder">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Groceries</span>
+                        <h3 class="product-title">Lato Milk Powder - 2.5kg</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 83,000</span>
+                            <span class="original-price">UGX 150,000</span>
+                            <span class="discount">46% off</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-id="4" data-category="Home Appliances">
+                    <span class="product-badge">-44%</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1584565068171-b1ac27b6a5a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Refrigerator">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Home Appliances</span>
+                        <h3 class="product-title">Roch 175 Liters Double Door Refrigerator</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 648,000</span>
+                            <span class="original-price">UGX 1,150,000</span>
+                            <span class="discount">44% off</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-id="5" data-category="Mobile Phones">
+                    <span class="product-badge">-30%</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Smartphone">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Mobile Phones</span>
+                        <h3 class="product-title">Redmi 14C - 6.88" 8GB RAM 128GB Storage</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 339,000</span>
+                            <span class="original-price">UGX 480,000</span>
+                            <span class="discount">30% off</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-id="6" data-category="Electronics">
+                    <span class="product-badge">-51%</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Digital Frame">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-title">Hikers 32 Inch Digital Frame</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 269,000</span>
+                            <span class="original-price">UGX 550,000</span>
+                            <span class="discount">51% off</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Arrivals -->
+        <section>
+            <h2 class="section-title">New Arrivals</h2>
+            <div class="products-grid">
+                <!-- Product 7 -->
+                <div class="product-card" data-id="7" data-category="Electronics">
+                    <span class="product-badge">New</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Laptop">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-title">MacBook Pro 14" M2 Chip 16GB RAM</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 5,499,000</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card" data-id="8" data-category="Mobile Phones">
+                    <span class="product-badge">-15%</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1605170439002-90845e8c0137?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Smartphone">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Mobile Phones</span>
+                        <h3 class="product-title">Samsung Galaxy S23 Ultra 5G</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 4,299,000</span>
+                            <span class="original-price">UGX 5,050,000</span>
+                            <span class="discount">15% off</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card" data-id="9" data-category="Home Appliances">
+                    <span class="product-badge">-25%</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Washing Machine">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Home Appliances</span>
+                        <h3 class="product-title">LG 8kg Front Load Washing Machine</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 2,199,000</span>
+                            <span class="original-price">UGX 2,930,000</span>
+                            <span class="discount">25% off</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10 -->
+                <div class="product-card" data-id="10" data-category="Electronics">
+                    <span class="product-badge">-20%</span>
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Headphones">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-title">Sony WH-1000XM5 Wireless Headphones</h3>
+                        <div class="product-price">
+                            <span class="current-price">UGX 1,199,000</span>
+                            <span class="original-price">UGX 1,500,000</span>
+                            <span class="discount">20% off</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Add to Cart</button>
+                            <button class="view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Product Details Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Product Details</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="main-product-image" src="" alt="Product Image">
+                    </div>
+                    <div class="thumbnail-container">
+                        <div class="thumbnail">
+                            <img src="" alt="Thumbnail 1">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="" alt="Thumbnail 2">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="" alt="Thumbnail 3">
+                        </div>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <span class="product-brand" id="product-brand">Brand</span>
+                    <h2 class="product-name" id="product-name">Product Name</h2>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="review-count">(24 reviews)</span>
+                    </div>
+                    <div class="price-container">
+                        <span class="current-price-lg" id="current-price-lg">UGX 0</span>
+                        <span class="original-price" id="original-price-lg">UGX 0</span>
+                        <span class="discount" id="discount-lg">0% off</span>
+                    </div>
+                    <div class="availability">
+                        <i class="fas fa-check-circle"></i> In Stock (15 items available)
+                    </div>
+                    <p class="product-description" id="product-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <div class="delivery-options">
+                        <h4 class="delivery-title">Delivery Options</h4>
+                        <select class="location-select" id="location-select">
+                            <option value="">Select your location</option>
+                            <option value="kampala">Kampala</option>
+                            <option value="entebbe">Entebbe</option>
+                            <option value="jinja">Jinja</option>
+                            <option value="mbarara">Mbarara</option>
+                            <option value="gulu">Gulu</option>
+                            <option value="other">Other Locations</option>
+                        </select>
+                        <p class="delivery-fee">Delivery Fee: <span id="delivery-fee">UGX 0</span></p>
+                    </div>
+                    <div class="quantity-selector">
+                        <button class="quantity-btn minus">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="quantity-btn plus">+</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="add-to-cart-lg">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="buy-now">
+                            <i class="fas fa-bolt"></i> Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-body">
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be added here dynamically -->
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Your cart is empty</p>
+                    <button class="shop-now-btn">Shop Now</button>
+                </div>
+            </div>
+            <div class="cart-summary" id="cart-summary" style="display: none;">
+                <div class="summary-row">
+                    <span class="summary-title">Subtotal</span>
+                    <span class="summary-value" id="cart-subtotal">UGX 0</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-title">Delivery Fee</span>
+                    <span class="summary-value" id="cart-delivery">UGX 0</span>
+                </div>
+                <div class="summary-row total">
+                    <span class="summary-title">Total</span>
+                    <span class="summary-value" id="cart-total">UGX 0</span>
+                </div>
+                <button class="checkout-btn" id="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Register Modal -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-content">
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Login</div>
+                <div class="auth-tab" id="register-tab">Register</div>
+            </div>
+            <div class="auth-form" id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password">
+                </div>
+                <button class="auth-btn" id="login-submit">Login</button>
+                <p class="auth-footer">
+                    Don't have an account? <span class="toggle-auth" id="go-to-register">Register here</span>
+                </p>
+            </div>
+            <div class="auth-form" id="register-form" style="display: none;">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" class="form-control" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" class="form-control" placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirm Password</label>
+                    <input type="password" id="register-confirm" class="form-control" placeholder="Confirm your password">
+                </div>
+                <button class="auth-btn" id="register-submit">Register</button>
+                <p class="auth-footer">
+                    Already have an account? <span class="toggle-auth" id="go-to-login">Login here</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>RWata Nyongeza Oilers</h3>
+                <p>Your one-stop shop for all your needs. Quality products at affordable prices with fast delivery across Uganda.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Deals</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Customer Service</h3>
+                <ul class="footer-links">
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</li>
+                    <li><i class="fas fa-phone"></i> +256 700 123456</li>
+                    <li><i class="fas fa-envelope"></i> info@rwatanyongeza.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Sat: 8:00 - 18:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 RWata Nyongeza Oilers. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Product Data
+        const products = [
+            {
+                id: 1,
+                name: "Chiq 270 Liters Water Dispenser",
+                brand: "Chiq",
+                category: "Home Appliances",
+                currentPrice: "UGX 866,700",
+                originalPrice: "UGX 1,600,000",
+                discount: "46%",
+                description: "The Chiq 270 Liters Water Dispenser is a high-capacity, energy-efficient appliance that provides both cooling and heating functions. With its sleek design and advanced features, it's perfect for offices and homes.",
+                images: [
+                    "https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1600566752225-3f2b1a1b3ce8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 2,
+                name: "Hisense 32 Inch HD LED TV",
+                brand: "Hisense",
+                category: "Electronics",
+                currentPrice: "UGX 299,000",
+                originalPrice: "UGX 550,000",
+                discount: "46%",
+                description: "Enjoy stunning HD picture quality with the Hisense 32 Inch LED TV. With multiple HDMI ports and built-in digital tuner, this TV offers great connectivity options for your entertainment needs.",
+                images: [
+                    "https://images.unsplash.com/photo-1546538915-a9e2c8d0a0da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1571415060716-baff5f717c37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 3,
+                name: "Lato Milk Powder - 2.5kg",
+                brand: "Lato",
+                category: "Groceries",
+                currentPrice: "UGX 83,000",
+                originalPrice: "UGX 150,000",
+                discount: "46%",
+                description: "Lato Milk Powder is a premium quality dairy product packed with essential nutrients. Perfect for families, it's rich in calcium and vitamins for strong bones and healthy growth.",
+                images: [
+                    "https://images.unsplash.com/photo-1627485937980-221c88ac04f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1563636619-e9143da7973b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 4,
+                name: "Roch 175 Liters Double Door Refrigerator",
+                brand: "Roch",
+                category: "Home Appliances",
+                currentPrice: "UGX 648,000",
+                originalPrice: "UGX 1,150,000",
+                discount: "44%",
+                description: "The Roch 175L Double Door Refrigerator offers ample storage space with separate compartments for fridge and freezer. Energy efficient with frost-free technology for easy maintenance.",
+                images: [
+                    "https://images.unsplash.com/photo-1584565068171-b1ac27b6a5a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1593990965215-075c1f918806?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1567583295236-0a0a8df9045b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 5,
+                name: "Redmi 14C - 6.88\" 8GB RAM 128GB Storage",
+                brand: "Redmi",
+                category: "Mobile Phones",
+                currentPrice: "UGX 339,000",
+                originalPrice: "UGX 480,000",
+                discount: "30%",
+                description: "The Redmi 14C features a large 6.88\" HD+ display, powerful octa-core processor, 8GB RAM and 128GB storage. With a 50MP triple camera system and 5000mAh battery, it's perfect for photography and long usage.",
+                images: [
+                    "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 6,
+                name: "Hikers 32 Inch Digital Frame",
+                brand: "Hikers",
+                category: "Electronics",
+                currentPrice: "UGX 269,000",
+                originalPrice: "UGX 550,000",
+                discount: "51%",
+                description: "Display your favorite memories with the Hikers 32\" Digital Frame. High-resolution display with multiple transition effects and support for various image formats. Connects via USB or WiFi for easy photo uploads.",
+                images: [
+                    "https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 7,
+                name: "MacBook Pro 14\" M2 Chip 16GB RAM",
+                brand: "Apple",
+                category: "Electronics",
+                currentPrice: "UGX 5,499,000",
+                originalPrice: "UGX 6,200,000",
+                discount: "11%",
+                description: "The MacBook Pro 14\" with M2 chip delivers incredible performance with its 8-core CPU and 10-core GPU. Featuring a stunning Liquid Retina XDR display, 16GB unified memory, and 512GB SSD storage.",
+                images: [
+                    "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 8,
+                name: "Samsung Galaxy S23 Ultra 5G",
+                brand: "Samsung",
+                category: "Mobile Phones",
+                currentPrice: "UGX 4,299,000",
+                originalPrice: "UGX 5,050,000",
+                discount: "15%",
+                description: "The Samsung Galaxy S23 Ultra 5G features a 6.8\" Dynamic AMOLED 2X display, 200MP camera system, and S Pen support. Powered by Snapdragon 8 Gen 2 with 12GB RAM and 256GB storage.",
+                images: [
+                    "https://images.unsplash.com/photo-1605170439002-90845e8c0137?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 9,
+                name: "LG 8kg Front Load Washing Machine",
+                brand: "LG",
+                category: "Home Appliances",
+                currentPrice: "UGX 2,199,000",
+                originalPrice: "UGX 2,930,000",
+                discount: "25%",
+                description: "The LG 8kg Front Load Washing Machine features AI Direct Drive, Steam Technology, and 6 Motion DD for superior cleaning. Energy efficient with TurboWash for faster washing cycles.",
+                images: [
+                    "https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1626804475297-41608ea09aeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1626808642875-0e545b6c39c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            },
+            {
+                id: 10,
+                name: "Sony WH-1000XM5 Wireless Headphones",
+                brand: "Sony",
+                category: "Electronics",
+                currentPrice: "UGX 1,199,000",
+                originalPrice: "UGX 1,500,000",
+                discount: "20%",
+                description: "The Sony WH-1000XM5 headphones feature industry-leading noise cancellation, 30-hour battery life, and touch controls. With premium sound quality and comfortable over-ear design for all-day listening.",
+                images: [
+                    "https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                ]
+            }
+        ];
+
+        // Delivery Fees
+        const deliveryFees = {
+            kampala: 15000,
+            entebbe: 20000,
+            jinja: 25000,
+            mbarara: 40000,
+            gulu: 45000,
+            other: 60000
+        };
+
+        // DOM Elements
+        const productModal = document.getElementById('product-modal');
+        const cartModal = document.getElementById('cart-modal');
+        const authModal = document.getElementById('auth-modal');
+        const closeModalBtns = document.querySelectorAll('.close-modal, .close-cart');
+        const viewDetailsBtns = document.querySelectorAll('.view-details');
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        const cartBtn = document.getElementById('cart-btn');
+        const loginBtn = document.getElementById('login-btn');
+        const cartCount = document.querySelector('.cart-count');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartSummary = document.getElementById('cart-summary');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const goToRegister = document.getElementById('go-to-register');
+        const goToLogin = document.getElementById('go-to-login');
+        const locationSelect = document.getElementById('location-select');
+        const deliveryFeeElement = document.getElementById('delivery-fee');
+        const searchInput = document.querySelector('.search-bar input');
+        const searchButton = document.querySelector('.search-bar button');
+        const categoryDropdown = document.querySelector('.category-dropdown');
+        const categoryLinks = document.querySelectorAll('.dropdown-content a');
+
+        // Cart Data
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+        // Initialize the page
+        function init() {
+            updateCartCount();
+            renderCartItems();
+            setupEventListeners();
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Modal close buttons
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    productModal.style.display = 'none';
+                    cartModal.style.display = 'none';
+                    authModal.style.display = 'none';
+                });
+            });
+
+            // View details buttons
+            viewDetailsBtns.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    const productCard = btn.closest('.product-card');
+                    const productId = parseInt(productCard.dataset.id);
+                    const product = products.find(p => p.id === productId);
+                    openProductModal(product);
+                });
+            });
+
+            // Add to cart buttons
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const productCard = btn.closest('.product-card');
+                    const productId = parseInt(productCard.dataset.id);
+                    const product = products.find(p => p.id === productId);
+                    addToCart(product, 1);
+                });
+            });
+
+            // Cart button
+            cartBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!isLoggedIn) {
+                    openAuthModal();
+                    return;
+                }
+                cartModal.classList.add('active');
+            });
+
+            // Login button
+            loginBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openAuthModal();
+            });
+
+            // Checkout button
+            checkoutBtn.addEventListener('click', () => {
+                if (!isLoggedIn) {
+                    openAuthModal();
+                    return;
+                }
+                alert('Proceeding to checkout...');
+            });
+
+            // Auth tabs
+            loginTab.addEventListener('click', () => {
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+            });
+
+            registerTab.addEventListener('click', () => {
+                registerTab.classList.add('active');
+                loginTab.classList.remove('active');
+                registerForm.style.display = 'block';
+                loginForm.style.display = 'none';
+            });
+
+            // Toggle between login and register
+            goToRegister.addEventListener('click', () => {
+                registerTab.click();
+            });
+
+            goToLogin.addEventListener('click', () => {
+                loginTab.click();
+            });
+
+            // Location select change
+            locationSelect.addEventListener('change', updateDeliveryFee);
+
+            // Search functionality
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Category filter
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const category = link.textContent;
+                    filterProductsByCategory(category);
+                });
+            });
+
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === productModal) {
+                    productModal.style.display = 'none';
+                }
+                if (e.target === authModal) {
+                    authModal.style.display = 'none';
+                }
+            });
+
+            // Login form submission
+            document.getElementById('login-submit').addEventListener('click', handleLogin);
+            
+            // Register form submission
+            document.getElementById('register-submit').addEventListener('click', handleRegister);
+        }
+
+        // Open product modal
+        function openProductModal(product) {
+            const mainImage = document.getElementById('main-product-image');
+            const thumbnails = document.querySelectorAll('.thumbnail img');
+            const productBrand = document.getElementById('product-brand');
+            const productName = document.getElementById('product-name');
+            const currentPrice = document.getElementById('current-price-lg');
+            const originalPrice = document.getElementById('original-price-lg');
+            const discount = document.getElementById('discount-lg');
+            const productDescription = document.getElementById('product-description');
+            const addToCartBtn = document.querySelector('.add-to-cart-lg');
+
+            // Set product details
+            productBrand.textContent = product.brand;
+            productName.textContent = product.name;
+            currentPrice.textContent = product.currentPrice;
+            originalPrice.textContent = product.originalPrice;
+            discount.textContent = product.discount + ' off';
+            productDescription.textContent = product.description;
+
+            // Set images
+            mainImage.src = product.images[0];
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.src = product.images[index] || product.images[0];
+            });
+
+            // Set up thumbnail click events
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    mainImage.src = thumbnail.src;
+                });
+            });
+
+            // Set up add to cart button
+            addToCartBtn.onclick = () => {
+                const quantity = parseInt(document.querySelector('.quantity-input').value);
+                addToCart(product, quantity);
+                productModal.style.display = 'none';
+            };
+
+            // Show modal
+            productModal.style.display = 'block';
+        }
+
+        // Open auth modal
+        function openAuthModal() {
+            authModal.style.display = 'block';
+        }
+
+        // Add to cart
+        function addToCart(product, quantity) {
+            if (!isLoggedIn) {
+                openAuthModal();
+                return;
+            }
+
+            const existingItem = cart.find(item => item.id === product.id);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.currentPrice,
+                    image: product.images[0],
+                    quantity: quantity
+                });
+            }
+
+            updateCart();
+        }
+
+        // Update cart
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'block' : 'none';
+        }
+
+        // Render cart items
+        function renderCartItems() {
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Your cart is empty</p>
+                        <button class="shop-now-btn">Shop Now</button>
+                    </div>
+                `;
+                cartSummary.style.display = 'none';
+                
+                // Add event listener to shop now button
+                document.querySelector('.shop-now-btn')?.addEventListener('click', () => {
+                    cartModal.style.display = 'none';
+                });
+                
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const priceNumber = parseInt(item.price.replace(/[^\d]/g, ''));
+                const itemTotal = priceNumber * item.quantity;
+                subtotal += itemTotal;
+
+                const cartItemElement = document.createElement('div');
+                cartItemElement.className = 'cart-item';
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-img">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-title">${item.name}</h4>
+                        <p class="cart-item-price">${item.price}</p>
+                        <div class="cart-item-quantity">
+                            <button class="cart-quantity-btn minus">-</button>
+                            <input type="number" class="cart-quantity-input" value="${item.quantity}" min="1">
+                            <button class="cart-quantity-btn plus">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item">&times;</button>
+                `;
+
+                cartItemsContainer.appendChild(cartItemElement);
+
+                // Add event listeners for quantity buttons
+                const minusBtn = cartItemElement.querySelector('.minus');
+                const plusBtn = cartItemElement.querySelector('.plus');
+                const quantityInput = cartItemElement.querySelector('.cart-quantity-input');
+                const removeBtn = cartItemElement.querySelector('.remove-item');
+
+                minusBtn.addEventListener('click', () => {
+                    if (item.quantity > 1) {
+                        item.quantity--;
+                        quantityInput.value = item.quantity;
+                        updateCart();
+                    }
+                });
+
+                plusBtn.addEventListener('click', () => {
+                    item.quantity++;
+                    quantityInput.value = item.quantity;
+                    updateCart();
+                });
+
+                quantityInput.addEventListener('change', () => {
+                    const newQuantity = parseInt(quantityInput.value);
+                    if (newQuantity >= 1) {
+                        item.quantity = newQuantity;
+                        updateCart();
+                    }
+                });
+
+                removeBtn.addEventListener('click', () => {
+                    cart = cart.filter(cartItem => cartItem.id !== item.id);
+                    updateCart();
+                });
+            });
+
+            // Calculate delivery fee (example: 5% of subtotal with minimum of 15000 UGX)
+            const deliveryFee = Math.max(15000, subtotal * 0.05);
+            const total = subtotal + deliveryFee;
+
+            // Update summary
+            document.getElementById('cart-subtotal').textContent = `UGX ${subtotal.toLocaleString()}`;
+            document.getElementById('cart-delivery').textContent = `UGX ${deliveryFee.toLocaleString()}`;
+            document.getElementById('cart-total').textContent = `UGX ${total.toLocaleString()}`;
+
+            cartSummary.style.display = 'block';
+        }
+
+        // Update delivery fee
+        function updateDeliveryFee() {
+            const location = locationSelect.value;
+            if (location && deliveryFees[location]) {
+                deliveryFeeElement.textContent = `UGX ${deliveryFees[location].toLocaleString()}`;
+            } else {
+                deliveryFeeElement.textContent = 'UGX 0';
+            }
+        }
+
+        // Search functionality
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            if (!searchTerm.trim()) return;
+
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) || 
+                product.brand.toLowerCase().includes(searchTerm) ||
+                product.category.toLowerCase().includes(searchTerm)
+            );
+
+            alert(`Found ${filteredProducts.length} products matching "${searchTerm}"`);
+            // In a real app, you would display these results
+        }
+
+        // Filter products by category
+        function filterProductsByCategory(category) {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                if (category === 'All' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Handle login
+        function handleLogin() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // In a real app, you would validate credentials with a server
+            isLoggedIn = true;
+            localStorage.setItem('isLoggedIn', 'true');
+            authModal.style.display = 'none';
+            alert('Login successful!');
+        }
+
+        // Handle register
+        function handleRegister() {
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+
+            if (!name || !email || !password || !confirm) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            if (password !== confirm) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            // In a real app, you would send this data to a server
+            isLoggedIn = true;
+            localStorage.setItem('isLoggedIn', 'true');
+            authModal.style.display = 'none';
+            alert('Registration successful! You are now logged in.');
+        }
+
+        // Initialize the app
+        init();
+    </script>
+</body>
+</html>
