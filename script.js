@@ -2,17 +2,17 @@
 const products = [
     {
         id: 1,
-        name: "Apple iPhone 17 Pro Max", 
-        brand: "Apple",
-        category: "Mobile Phones",
-        currentPrice: "UGX 3,200,000",
-        originalPrice: "UGX 5,600,000",
+        name: "Hisense 32 Inch HD LED TV",
+        brand: "Hisense",
+        category: "Electronics",
+        currentPrice: "UGX 299,000",
+        originalPrice: "UGX 550,000",
         discount: "46%",
-        description: " ",
+        description: "Enjoy stunning HD picture quality with the Hisense 32 Inch LED TV. With multiple HDMI ports and built-in digital tuner, this TV offers great connectivity options for your entertainment needs.",
         images: [
-            "https://ug.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/45/2526952/1.jpg?5398",
-            "https://prostore-mainz.de/wp-content/uploads/2025/09/iP17_Pro.jpg",
-            "https://cdn.mos.cms.futurecdn.net/Ed9BeejFJiSNWqPYPYTz6h-650-80.jpg.webp"
+            "https://images.unsplash.com/photo-1546538915-a9e2c8d0a0da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1571415060716-baff5f717c37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
         ]
     },
     {
