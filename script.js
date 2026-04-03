@@ -2,17 +2,26 @@
 const products = [
     {
         id: 1,
-        name: "Chiq 270 Liters Water Dispenser",
-        brand: "Chiq",
-        category: "Home Appliances",
-        currentPrice: "UGX 866,700",
-        originalPrice: "UGX 1,600,000",
+        name: "Apple iPhone 17 Pro Max", 
+        brand: "Apple",
+        category: "Mobile Phones",
+        currentPrice: "UGX 3,200,000",
+        originalPrice: "UGX 5,600,000",
         discount: "46%",
-        description: "The Chiq 270 Liters Water Dispenser is a high-capacity, energy-efficient appliance that provides both cooling and heating functions. With its sleek design and advanced features, it's perfect for offices and homes.",
+        description: "Network Technology: GSM / CDMA / HSPA / EVDO / LTE / 5G
+.SIM; Nano-SIM + eSIM 
+.Size: 6.9 inches
+.Platform: OS iOS 26
+.Internal; 512GB 12GB RAM
+.Main Camera; Dual 48 MP
+.Comms: WLAN Wi-Fi 802.11 a/b/g/n/ac/6/7, tri-band, hotspot
+.Bluetooth; 6.0, A2DP, LE
+.USB: USB Type-C 2.0, DisplayPort
+.Battery Type: Li-Ion 4823mAh",
         images: [
-            "https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            "https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            "https://images.unsplash.com/photo-1600566752225-3f2b1a1b3ce8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+            "https://ug.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/45/2526952/1.jpg?5398",
+            "https://prostore-mainz.de/wp-content/uploads/2025/09/iP17_Pro.jpg",
+            "https://cdn.mos.cms.futurecdn.net/Ed9BeejFJiSNWqPYPYTz6h-650-80.jpg.webp"
         ]
     },
     {
