@@ -8,16 +8,7 @@ const products = [
         currentPrice: "UGX 3,200,000",
         originalPrice: "UGX 5,600,000",
         discount: "46%",
-        description: "Network Technology: GSM / CDMA / HSPA / EVDO / LTE / 5G
-        .SIM; Nano-SIM + eSIM 
-        .Size: 6.9 inches
-        .Platform: OS iOS 26
-        .Internal; 512GB 12GB RAM
-        .Main Camera; Dual 48 MP
-        .Comms: WLAN Wi-Fi 802.11 a/b/g/n/ac/6/7, tri-band, hotspot
-        .Bluetooth; 6.0, A2DP, LE
-        .USB: USB Type-C 2.0, DisplayPort
-        .Battery Type: Li-Ion 4823mAh ",
+        description: " ",
         images: [
             "https://ug.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/45/2526952/1.jpg?5398",
             "https://prostore-mainz.de/wp-content/uploads/2025/09/iP17_Pro.jpg",
